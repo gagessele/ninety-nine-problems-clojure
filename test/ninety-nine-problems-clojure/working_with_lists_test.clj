@@ -15,4 +15,6 @@
 (deftest p03
   (testing "Find the K'th element of a list"
     (is (= :c
-           (wwl/element-at '(:a :b :c :d :e) 3)))))
+           (wwl/element-at '(:a :b :c :d :e) 3)))
+    (is (= :c
+           (nth '(:a :b :c :d :e) 2)))))
