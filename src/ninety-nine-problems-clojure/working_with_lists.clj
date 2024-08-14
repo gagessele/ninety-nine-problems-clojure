@@ -3,10 +3,10 @@
 (defn last-box
   "Find the last box of a list."
   [coll]
-  (let [[x & xs] coll]
+  (let [xs (rest coll)]
     (cond
-      (nil? xs) coll
-      :else (recur (last-box xs)))))
+      (empty? xs) coll
+      :else (last-box xs))))
 
 (defn last-but-one-box
   "Find the last but one box of a list"
