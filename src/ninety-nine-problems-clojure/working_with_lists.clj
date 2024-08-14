@@ -17,3 +17,9 @@
       (nil? x2) (list x1)
       (nil? xs) (list x1 x2)
       :else (recur (last-but-one-box xs)))))
+
+(defn element-at
+  [coll i]
+  (cond
+    (= 1 i) (first coll)
+    :else (element-at (rest coll) (- i 1))))
