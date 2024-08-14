@@ -5,7 +5,7 @@
 (deftest p01
   (testing "Find the last box of a list"
     (is (= '(:d)
-           (wlw/last-box '(:a :b :c :d))))))
+           (wwl/last-box '(:a :b :c :d))))))
 
 (deftest p02
   (testing "Find the last but one box of a list"
