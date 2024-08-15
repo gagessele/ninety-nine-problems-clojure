@@ -18,3 +18,8 @@
            (wwl/element-at '(:a :b :c :d :e) 3)))
     (is (= :c
            (nth '(:a :b :c :d :e) 2)))))
+
+(deftest p07
+  (testing "Flatten a nested list structure"
+    (is (= '(:a :b :c :d :e)
+           (wwl/flatten '(:a '(:b '(:c :d) :e)))))))

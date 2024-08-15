@@ -23,3 +23,7 @@
   (cond
     (= 1 i) (first coll)
     :else (element-at (rest coll) (- i 1))))
+
+(defn flatten
+  [coll]
+  coll)
