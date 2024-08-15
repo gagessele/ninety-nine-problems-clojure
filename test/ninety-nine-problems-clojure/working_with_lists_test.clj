@@ -22,4 +22,4 @@
 (deftest p07
   (testing "Flatten a nested list structure"
     (is (= '(:a :b :c :d :e)
-           (wwl/flatten '(:a '(:b '(:c :d) :e)))))))
+           (flatten (list :a (list :b (list :c :d) :e)))))))
