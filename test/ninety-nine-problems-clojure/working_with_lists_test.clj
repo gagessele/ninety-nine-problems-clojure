@@ -19,6 +19,13 @@
     (is (= :c
            (nth '(:a :b :c :d :e) 2)))))
 
+(deftest p04
+  (testing "Find the number of elements of a list"
+    (is (= 4
+           (wwl/number-elements '(:a :b :c :d))))
+    (is (= 4
+           (count '(:a :b :c :d))))))
+
 (deftest p07
   (testing "Flatten a nested list structure"
     (is (= '(:a :b :c :d :e)
