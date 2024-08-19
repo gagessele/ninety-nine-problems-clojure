@@ -45,6 +45,11 @@
       (empty? coll) out
       :else (reverse-list-aux tail *out*))))
 
+(defn palindrome
+  [coll]
+  (= coll
+     (reverse coll)))
+
 (defn flatten-list
   "Flattens a collection"
   [coll]
@@ -58,6 +63,3 @@
       (empty? coll) out
       (false? (coll? head)) (conj (flatten-list-aux tail out) head)
       (coll? head) (flatten-list-aux head (flatten-list-aux tail out)))))
-
-(flatten-list '(:a :b :c :d :e))
-(flatten-list '(:a :b :c :d (:e (:d :e (:f)))))

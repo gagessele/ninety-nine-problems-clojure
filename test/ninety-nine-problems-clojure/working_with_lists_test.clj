@@ -26,7 +26,22 @@
     (is (= 4
            (count '(:a :b :c :d))))))
 
+(deftest p05
+  (testing "Reverse a list"
+    (is (= '(:d :c :b :a)
+           (reverse '(:a :b :c :d))))
+    (is (= '(:d :c :b :a)
+           (wwl/reverse-list '(:a :b :c :d))))))
+
+(deftest p06
+  (testing "Find out whether a list is a palindrome"
+    (is (true? (wwl/palindrome '(:x :a :m :a :x))))))
+
 (deftest p07
   (testing "Flatten a nested list structure"
     (is (= '(:a :b :c :d :e)
-           (flatten (list :a (list :b (list :c :d) :e)))))))
+           (flatten (list :a (list :b (list :c :d) :e)))))
+    (is (= '(:a :b :c :d :e)
+           (wwl/flatten-list '(:a (:b (:c :d) :e)))))))
+
+
