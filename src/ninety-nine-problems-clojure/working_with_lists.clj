@@ -63,3 +63,19 @@
       (empty? coll) out
       (false? (coll? head)) (conj (flatten-list-aux tail out) head)
       (coll? head) (flatten-list-aux head (flatten-list-aux tail out)))))
+
+(defn compress
+  [coll]
+  coll
+  (let [head (first coll)
+        tail (rest coll)
+        ahead (first tail)]
+    (cond
+      (empty? coll) coll
+      (empty? tail) coll
+      (= head ahead) (compress tail)
+      :else (conj (compress tail) head))))
+
+(compress '())
+(compress '(:a))
+(compress '(:a :b :b :c :c :d :e :f :f))
