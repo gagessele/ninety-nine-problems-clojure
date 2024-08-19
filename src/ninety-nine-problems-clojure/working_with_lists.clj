@@ -33,27 +33,31 @@
       :else (+ 1 (number-elements tail)))))
 
 (defn reverse-list
-  ([coll]
-   (cond
-     (empty? coll) ()
-     :else (let [head (first coll)
-                 tail (rest coll)
-                 out  (conj '() head)]
-             (reverse-list tail out))))
-  ([coll out]
-   (cond
-     (empty? coll) out
-     :else (let [head (first coll)
-                 tail (rest coll)
-                 out (conj out head)]
-             (reverse-list tail out)))))
+  [coll]
+  (reverse-list-aux coll '()))
+
+(defn ^:private reverse-list-aux
+  [coll out]
+  (let [head (first coll)
+        tail (rest coll)
+        *out* (conj out head)]
+    (cond
+      (empty? coll) out
+      :else (reverse-list-aux tail *out*))))
 
 (defn flatten-list
   "Flattens a collection"
   [coll]
+  (flatten-list-aux coll '()))
+
+(defn ^:private flatten-list-aux
+  [coll out]
   (let [head (first coll)
         tail (rest coll)]
-    (println head tail)
     (cond
-      (empty? tail) (list head)
-      :else (recur (flatten-list (list (flatten-list head) (flatten-list tail)))))))
+      (empty? coll) out
+      (false? (coll? head)) (conj (flatten-list-aux tail out) head)
+      (coll? head) (flatten-list-aux head (flatten-list-aux tail out)))))
+
+(flatten-list '(:a :b :c :d :e))
+(flatten-list '(:a :b :c :d (:e (:d :e (:f)))))
